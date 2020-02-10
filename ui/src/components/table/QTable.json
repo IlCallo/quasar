@@ -10,7 +10,8 @@
       "type": "Array",
       "desc": "Rows of data to display",
       "examples": [ ":data=\"myData\"" ],
-      "category": "general"
+      "category": "general",
+      "tsType": "QTableDataPropType"
     },
 
     "row-key": {
