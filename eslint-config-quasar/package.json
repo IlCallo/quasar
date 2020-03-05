@@ -1,0 +1,29 @@
+{
+  "name": "eslint-config-quasar",
+  "version": "0.1.0",
+  "description": "ESLint configuration presets for Quasar projects",
+  "main": "index.js",
+  "repository": "https://github.com/quasarframework/quasar/eslint-config-quasar",
+  "author": "Paolo Caleffi <p.caleffi@dreamonkey.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@quasar/app": "^1.0.0",
+    "eslint": "^5.0.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/parser": "^2.22.0",
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-standard": "^14.1.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.1"
+  }
+}
