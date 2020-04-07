@@ -70,49 +70,57 @@ interface PwaMetaVariablesEntry {
   closeTag?: boolean;
 }
 
+interface QuasarBasePwaConfiguration {
+  workboxPluginMode?: "GenerateSW" | "InjectManifest";
+  /**
+   * Full option list can be found
+   *  [here](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#full_generatesw_config).
+   */
+  workboxOptions?: object;
+  manifest?: PwaManifestOptions;
+}
+
+interface QuasarPwaMetaVarsObjConfiguration extends QuasarBasePwaConfiguration {
+  /**
+   * @default
+   * ```typescript
+   * {
+   *    appleMobileWebAppCapable: 'yes';
+   *    appleMobileWebAppStatusBarStyle: 'default';
+   *    appleTouchIcon120: 'statics/icons/apple-icon-120x120.png';
+   *    appleTouchIcon180: 'statics/icons/apple-icon-180x180.png';
+   *    appleTouchIcon152: 'statics/icons/apple-icon-152x152.png';
+   *    appleTouchIcon167: 'statics/icons/apple-icon-167x167.png';
+   *    appleSafariPinnedTab: 'statics/icons/safari-pinned-tab.svg';
+   *    msapplicationTileImage: 'statics/icons/ms-icon-144x144.png';
+   *    msapplicationTileColor: '#000000';
+   * }
+   * ```
+   */
+  metaVariables?: {
+    appleMobileWebAppCapable: string;
+    appleMobileWebAppStatusBarStyle: string;
+    appleTouchIcon120: string;
+    appleTouchIcon180: string;
+    appleTouchIcon152: string;
+    appleTouchIcon167: string;
+    appleSafariPinnedTab: string;
+    msapplicationTileImage: string;
+    msapplicationTileColor: string;
+  };
+}
+
+interface QuasarPwaMetaVarsFnConfiguration extends QuasarBasePwaConfiguration {
+  metaVariablesFn?: (manifest?: PwaManifestOptions) => PwaMetaVariablesEntry[];
+}
+
 declare module "quasar" {
   /**
    * This is the place where you can configure
    * [Workbox](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin)’s
    * behavior and also tweak your `manifest.json`.
    */
-  interface QuasarPwaConfiguration {
-    workboxPluginMode?: "GenerateSW" | "InjectManifest";
-    /**
-     * Full option list can be found
-     *  [here](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#full_generatesw_config).
-     */
-    workboxOptions?: object;
-    manifest?: PwaManifestOptions;
-    /**
-     * @default
-     * ```typescript
-     * {
-     *    appleMobileWebAppCapable: 'yes';
-     *    appleMobileWebAppStatusBarStyle: 'default';
-     *    appleTouchIcon120: 'statics/icons/apple-icon-120x120.png';
-     *    appleTouchIcon180: 'statics/icons/apple-icon-180x180.png';
-     *    appleTouchIcon152: 'statics/icons/apple-icon-152x152.png';
-     *    appleTouchIcon167: 'statics/icons/apple-icon-167x167.png';
-     *    appleSafariPinnedTab: 'statics/icons/safari-pinned-tab.svg';
-     *    msapplicationTileImage: 'statics/icons/ms-icon-144x144.png';
-     *    msapplicationTileColor: '#000000';
-     * }
-     * ```
-     */
-    metaVariables?: {
-      appleMobileWebAppCapable: string;
-      appleMobileWebAppStatusBarStyle: string;
-      appleTouchIcon120: string;
-      appleTouchIcon180: string;
-      appleTouchIcon152: string;
-      appleTouchIcon167: string;
-      appleSafariPinnedTab: string;
-      msapplicationTileImage: string;
-      msapplicationTileColor: string;
-    };
-    metaVariablesFn?: (manifest?: PwaManifestOptions) => PwaMetaVariablesEntry[]
-  }
+  type QuasarPwaConfiguration =
+    | QuasarPwaMetaVarsObjConfiguration
+    | QuasarPwaMetaVarsFnConfiguration;
 }
-
-
