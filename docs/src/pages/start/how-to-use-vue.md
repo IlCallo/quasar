@@ -2,13 +2,16 @@
 title: How To Use Vue
 desc: Quick tutorial about Vue principles and how to use it with Quasar.
 ---
+
+Just getting started with Vue? Head [here](https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3/?fpr=quasar-framework) for a brief introduction <vue-mastery-disclaimer />
+
 Before you begin with Quasar, it is a good idea to get acquainted with ES6 and have a fairly good knowledge about how Vue 3 works. ([Quick overview of ES6](https://github.com/lukehoban/es6features) and [ES6 complete list of features](http://es6-features.org/#Constants) -- don't worry, you don't need to understand ALL of ES6). For devs experienced with reactive UIs, the [Vue 3 documentation](https://v3.vuejs.org/) itself takes a half-day at most to read top-to-bottom and will help you understand how Quasar components can be used and configured.
 
 ::: tip
 If you are a total beginner to Vue and reactive UI libraries and want a good tutorial, we recommend you take a look at [Vue and Quasar video tutorials](/video-tutorials).
 :::
 
-After reading the Vue documentation, let's clear up some of the most frequently asked questions, like *"How can I use Quasar components, Vue properties, methods and events"*.
+After reading the Vue documentation, let's clear up some of the most frequently asked questions, like _"How can I use Quasar components, Vue properties, methods and events"_.
 
 ## Vue Single File Components (SFC)
 
