@@ -3,6 +3,7 @@ title: Upgrade Guide
 desc: How to upgrade Quasar from older versions to the latest one.
 components:
   - upgrade-guide/UpgradeVideoLink
+  - affiliation/VueMasteryDisclaimer
 ---
 
 ::: danger Quasar UI v2
@@ -250,6 +251,8 @@ You'll need to edit src/App.vue and remove the wrapper `<div id="q-app">`. You d
 ```
 
 ### Vue 3
+
+<vue-mastery-disclaimer /> Confused by the changes? Head [here](https://www.vuemastery.com/courses/from-vue2-to-vue3/from-vue-2-to-vue-3/?fpr=quasar-framework) to get some clarity
 
 ::: tip
 For Quasar CLI projects, you don't need to manually install/upgrade the `vue` package as "@quasar/app" v3 is already supplying the correct version of Vue for you.
