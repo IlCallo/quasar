@@ -61,8 +61,6 @@ Contains the full path (String) to the root of the app on which this App Extensi
 
 ## api.compatibleWith
 
-<q-badge label="@quasar/app v1.0.0-beta.18+" />
-
 Ensure the App Extension is compatible with a package installed in the host app through a semver condition.
 
 If the semver condition is not met, then @quasar/app errors out and halts execution.
@@ -79,8 +77,6 @@ api.compatibleWith('@quasar/app', '1.x')
 
 ## api.hasPackage
 
-<q-badge label="@quasar/app v1.0.0-beta.18+" />
-
 Determine if some package is installed in the host app through a semver condition.
 
 Example of semver condition: `'1.x || >=2.5.0 || 5.0.0 - 7.2.3'`.
@@ -94,7 +90,7 @@ Example of semver condition: `'1.x || >=2.5.0 || 5.0.0 - 7.2.3'`.
 if (api.hasPackage('vuelidate')) {
   // hey, this app has it (any version of it)
 }
-if (api.hasPackage('quasar', '^1.0.0-beta.0')) {
+if (api.hasPackage('quasar', '^1.0.0')) {
   // hey, this app has v1 installed
 }
 ```
@@ -115,8 +111,6 @@ if (api.hasExtension(extId)) {
 ```
 
 ## api.getPackageVersion
-
-<q-badge label="@quasar/app v1.0.0-beta.18+" />
 
 Get the version of a host app package.
 
@@ -159,7 +153,7 @@ module.exports = function (api, ctx) {
     // the regex above matches those files too!
 
     // make sure my-ext css goes through webpack
-    conf.css.push('~quasar-app-extension-my-ext/src/component/my-ext.styl')
+    conf.css.push('~quasar-app-extension-my-ext/src/component/my-ext.sass')
   })
 }
 ```
@@ -174,10 +168,10 @@ Chain webpack config
 ```js
 /**
  * @param {function} fn
- *   (cfg: ChainObject, invoke: Object {isClient, isServer}) => undefined
+ *   (chain: ChainObject, invoke: Object {isClient, isServer}) => undefined
  */
-api.chainWebpack((cfg, { isClient, isServer }, api) => {
-  // add/remove/change cfg (Webpack chain Object)
+api.chainWebpack((chain, { isClient, isServer }, api) => {
+  // add/remove/change chain (Webpack chain Object)
 })
 ```
 
@@ -197,20 +191,20 @@ api.extendWebpack((cfg, { isClient, isServer }, api) => {
 ```
 
 ## api.chainWebpackMainElectronProcess
-Chain webpack config of main electron process
+Chain webpack config of the main electron process
 
 ```js
 /**
  * @param {function} fn
- *   (cfg: ChainObject) => undefined
+ *   (chain: ChainObject) => undefined
  */
-api.chainWebpackMainElectronProcess((cfg, { isClient, isServer }, api) => {
-  // add/remove/change cfg (Webpack chain Object)
+api.chainWebpackMainElectronProcess((chain, { isClient, isServer }, api) => {
+  // add/remove/change chain (Webpack chain Object)
 })
 ```
 
 ## api.extendWebpackMainElectronProcess
-Extend webpack config Object of main electron process
+Extend webpack config Object of the main electron process
 
 ```js
 /**
@@ -219,6 +213,90 @@ Extend webpack config Object of main electron process
  */
 api.extendWebpackMainElectronProcess((cfg, { isClient, isServer }, api) => {
   // add/remove/change cfg (Webpack configuration Object)
+})
+```
+
+## api.chainWebpackPreloadElectronProcess
+Chain webpack config of the preload electron process
+
+```js
+/**
+ * @param {function} fn
+ *   (chain: ChainObject) => undefined
+ */
+api.chainWebpackPreloadElectronProcess((chain, { isClient, isServer }, api) => {
+  // add/remove/change chain (Webpack chain Object)
+})
+```
+
+## api.extendWebpackPreloadElectronProcess
+Extend webpack config Object of the preload electron process
+
+```js
+/**
+ * @param {function} fn
+ *   (cfg: Object) => undefined
+ */
+api.extendWebpackPreloadElectronProcess((cfg, { isClient, isServer }, api) => {
+  // add/remove/change cfg (Webpack configuration Object)
+})
+```
+
+## api.chainWebpackWebserver
+
+Chain webpack config of SSR webserver (includes the SSR middlewares from /src-ssr/middlewares)
+
+```js
+/**
+ * @param {function} fn
+ *   (chain: ChainObject) => undefined
+ */
+api.chainWebpackWebserver ((chain, { isClient, isServer }, api) => {
+  // add/remove/change chain (Webpack chain Object)
+  // isClient is always "false" and isServer is always "true"
+})
+```
+
+## api.extendWebpackWebserver
+
+Extend webpack config Object of SSR webserver (includes the SSR middlewares from /src-ssr/middlewares)
+
+```js
+/**
+ * @param {function} fn
+ *   (cfg: Object) => undefined
+ */
+api.extendWebpackWebserver((cfg, { isClient, isServer }, api) => {
+  // add/remove/change cfg (Webpack configuration Object)
+  // isClient is always "false" and isServer is always "true"
+})
+```
+
+## api.chainWebpackCustomSW
+
+Chain webpack config for the custom service worker when using InjectManifest (content of /src-pwa/custom-service-worker.js):
+
+```js
+/**
+ * @param {function} fn
+ *   (cfg: ChainObject) => undefined
+ */
+api.chainWebpackCustomSW ((cfg, { isClient, isServer }, api) => {
+  // add/remove/change cfg (Webpack chain Object)
+})
+```
+
+## api.extendWebpackCustomSW
+
+Extend webpack config Object for the custom service worker when using InjectManifest (content of /src-pwa/custom-service-worker.js):
+
+```js
+/**
+ * @param {function} fn
+ *   (chain: Object) => undefined
+ */
+api.extendWebpackCustomSW((chain, { isClient, isServer }, api) => {
+  // add/remove/change chain (Webpack configuration Object)
 })
 ```
 
@@ -274,8 +352,6 @@ Always test with the `quasar describe` command to ensure you got the syntax righ
 
 ## api.getPersistentConf
 
-<q-badge label="@quasar/app v1.0.0-beta.25+" />
-
 Get the internal persistent config of this extension. Returns empty object if it has none.
 
 ```js
@@ -286,8 +362,6 @@ api.getPersistentConf()
 ```
 
 ## api.setPersistentConf
-
-<q-badge label="@quasar/app v1.0.0-beta.25+" />
 
 Set the internal persistent config of this extension. If it already exists, it is overwritten.
 
@@ -302,8 +376,6 @@ api.setPersistentConf({
 
 ## api.mergePersistentConf
 
-<q-badge label="@quasar/app v1.0.0-beta.25+" />
-
 Deep merge into the internal persistent config of this extension. If extension does not have any config already set, this is essentially equivalent to setting it for the first time.
 
 ```js
@@ -316,8 +388,6 @@ api.mergePersistentConf({
 ```
 
 ## api.beforeDev
-
-<q-badge label="@quasar/app v1.0.0-beta.18+" />
 
 Prepare external services before `$ quasar dev` command runs, like starting some backend or any other service that the app relies on.
 
@@ -351,8 +421,6 @@ api.afterDev((api, { quasarConf }) => {
 
 ## api.beforeBuild
 
-<q-badge label="@quasar/app v1.0.0-beta.16+" />
-
 Run hook before Quasar builds app for production (`$ quasar build`). At this point, the distributables folder hasn't been created yet.
 
 Can use async/await or directly return a Promise.
@@ -384,8 +452,6 @@ api.afterBuild((api, { quasarConf }) => {
 ```
 
 ## api.onPublish
-
-<q-badge label="@quasar/app v1.0.0-rc.7+" />
 
 Run hook if publishing was requested (`$ quasar build -P`), after Quasar built app for production and the afterBuild hook (if specified) was executed.
 

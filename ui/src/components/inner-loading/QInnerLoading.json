@@ -1,8 +1,8 @@
 {
-  "mixins": [ "mixins/size" ],
+  "mixins": [ "composables/private/use-size", "composables/private/use-transition" ],
 
-  "behavior": {
-    "$listeners": true
+  "meta": {
+    "docsUrl": "https://v2.quasar.dev/vue-components/inner-loading"
   },
 
   "props": {
@@ -13,22 +13,13 @@
     },
 
     "color": {
-      "extends": "color"
+      "extends": "color",
+      "desc": "Color name for component from the Quasar Color Palette for the inner Spinner (unless using the default slot)"
     },
 
     "size": {
       "desc": "Size in CSS units, including unit name, or standard size name (xs|sm|md|lg|xl), for the inner Spinner (unless using the default slot)",
       "default": "42px"
-    },
-
-    "transition-show": {
-      "extends": "transition",
-      "default": "fade"
-    },
-
-    "transition-hide": {
-      "extends": "transition",
-      "default": "fade"
     },
 
     "dark": {

@@ -1,10 +1,16 @@
 {
+  "mixins": [ "composables/private/use-form" ],
+
+  "meta": {
+    "docsUrl": "https://v2.quasar.dev/vue-components/slider"
+  },
+
   "props": {
-    "value": {
+    "model-value": {
+      "extends": "model-value",
       "type": "Number",
-      "desc": "Model of the component (must be between min/max); Either use this property (along with a listener for 'input' event) OR use v-model directive",
-      "examples": [ "v-model=\"positionModel\"" ],
-      "category": "model"
+      "desc": "Model of the component (must be between min/max); Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+      "examples": [ "v-model=\"positionModel\"" ]
     },
 
     "min": {
@@ -31,6 +37,18 @@
       "category": "model"
     },
 
+    "reverse": {
+      "type": "Boolean",
+      "desc": "Work in reverse (changes direction)",
+      "category": "behavior"
+    },
+
+    "vertical": {
+      "type": "Boolean",
+      "desc": "Display in vertical direction",
+      "category": "behavior"
+    },
+
     "color": {
       "extends": "color"
     },
@@ -46,8 +64,7 @@
     },
 
     "label-text-color": {
-      "extends": "color",
-      "addedIn": "v1.1.0"
+      "extends": "color"
     },
 
     "label-value": {
@@ -77,6 +94,14 @@
       "category": "behavior"
     },
 
+    "thumb-path": {
+      "type": "String",
+      "desc": "Set custom thumb svg path",
+      "default": "M 4, 10 a 6,6 0 1,0 12,0 a 6,6 0 1,0 -12,0",
+      "examples": [ "M5 5 h10 v10 h-10 v-10" ],
+      "category": "style"
+    },
+
     "dark": {
       "extends": "dark"
     },
@@ -99,13 +124,24 @@
   },
 
   "events": {
-    "input": {
-      "extends": "input"
+    "update:model-value": {
+      "extends": "update:model-value"
     },
 
     "change": {
-      "extends": "input",
+      "extends": "update:model-value",
       "desc": "Emitted on lazy model value change (after user slides then releases the thumb)"
+    },
+
+    "pan": {
+      "desc": "Triggered when user starts panning on the component",
+      "params": {
+        "phase": {
+          "type": "String",
+          "desc": "Phase of panning",
+          "values": [ "start", "end" ]
+        }
+      }
     }
   }
 }

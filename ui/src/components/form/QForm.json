@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "docsUrl": "https://v2.quasar.dev/vue-components/form"
+  },
+
   "props": {
     "autofocus": {
       "type": "Boolean",
@@ -21,8 +25,7 @@
     "greedy": {
       "type": "Boolean",
       "desc": "Validate all fields in form (by default it stops after finding the first invalid field with synchronous validation)",
-      "category": "behavior",
-      "addedIn": "1.1.1"
+      "category": "behavior"
     }
   },
 
@@ -46,7 +49,14 @@
     },
 
     "validation-error": {
-      "desc": "Emitted after a validation was triggered and at least one of the inner Quasar components models are NOT valid"
+      "desc": "Emitted after a validation was triggered and at least one of the inner Quasar components models are NOT valid",
+      "params": {
+        "ref": {
+          "type": "Object",
+          "desc": "Vue reference to the first component that triggered the validation error",
+          "__exemption": [ "examples" ]
+        }
+      }
     }
   },
 
@@ -95,6 +105,15 @@
           "desc": "JS event object",
           "__exemption": [ "examples" ]
         }
+      }
+    },
+
+    "getValidationComponents": {
+      "desc": "Get array of children vue components that support validation",
+      "returns": {
+        "type": "Array",
+        "desc": "Vue components that support Quasar validation API",
+        "__exemption": [ "examples" ]
       }
     }
   }

@@ -1,14 +1,16 @@
-import Vue from 'vue'
+import { isRuntimeSsrPreHydration } from './Platform.js'
 
-import { isSSR, fromSSR } from './Platform.js'
-import { listenOpts } from '../utils/event.js'
+import defineReactivePlugin from '../utils/private/define-reactive-plugin.js'
+import { listenOpts, noop } from '../utils/event.js'
 import debounce from '../utils/debounce.js'
 
-const SIZE_LIST = ['sm', 'md', 'lg', 'xl']
+const SIZE_LIST = [ 'sm', 'md', 'lg', 'xl' ]
+const { passive } = listenOpts
 
-export default {
+export default defineReactivePlugin({
   width: 0,
   height: 0,
+  name: 'xs',
 
   sizes: {
     sm: 600,
@@ -29,27 +31,43 @@ export default {
     md: false,
     lg: false
   },
+
   xs: true,
   sm: false,
   md: false,
   lg: false,
-  xl: false,
+  xl: false
+}, {
+  setSizes: noop,
+  setDebounce: noop,
 
-  setSizes () {},
-  setDebounce () {},
+  install ({ $q, onSSRHydrated }) {
+    $q.screen = this
 
-  install ($q, queues) {
-    if (isSSR === true) {
-      $q.screen = this
+    if (__QUASAR_SSR_SERVER__) { return }
+
+    if (this.__installed === true) {
+      if ($q.config.screen !== void 0) {
+        if ($q.config.screen.bodyClasses === false) {
+          document.body.classList.remove(`screen--${ this.name }`)
+        }
+        else {
+          this.__update(true)
+        }
+      }
       return
     }
 
-    let update = force => {
-      if (window.innerHeight !== this.height) {
-        this.height = window.innerHeight
-      }
+    const classes = $q.config.screen !== void 0 && $q.config.screen.bodyClasses === true
 
-      const w = window.innerWidth
+    this.__update = force => {
+      const
+        w = window.innerWidth,
+        h = window.innerHeight
+
+      if (h !== this.height) {
+        this.height = h
+      }
 
       if (w !== this.width) {
         this.width = w
@@ -58,7 +76,7 @@ export default {
         return
       }
 
-      const s = this.sizes
+      let s = this.sizes
 
       this.gt.xs = w >= s.sm
       this.gt.sm = w >= s.md
@@ -69,18 +87,32 @@ export default {
       this.lt.lg = w < s.lg
       this.lt.xl = w < s.xl
       this.xs = this.lt.sm
-      this.sm = this.gt.xs && this.lt.md
-      this.md = this.gt.sm && this.lt.lg
-      this.lg = this.gt.md && this.lt.xl
+      this.sm = this.gt.xs === true && this.lt.md === true
+      this.md = this.gt.sm === true && this.lt.lg === true
+      this.lg = this.gt.md === true && this.lt.xl === true
       this.xl = this.gt.lg
+
+      s = (this.xs === true && 'xs')
+        || (this.sm === true && 'sm')
+        || (this.md === true && 'md')
+        || (this.lg === true && 'lg')
+        || 'xl'
+
+      if (s !== this.name) {
+        if (classes === true) {
+          document.body.classList.remove(`screen--${ this.name }`)
+          document.body.classList.add(`screen--${ s }`)
+        }
+        this.name = s
+      }
     }
 
     let updateEvt, updateSizes = {}, updateDebounce = 16
 
     this.setSizes = sizes => {
       SIZE_LIST.forEach(name => {
-        if (sizes[name] !== void 0) {
-          updateSizes[name] = sizes[name]
+        if (sizes[ name ] !== void 0) {
+          updateSizes[ name ] = sizes[ name ]
         }
       })
     }
@@ -89,31 +121,34 @@ export default {
     }
 
     const start = () => {
-      const style = getComputedStyle(document.body)
+      const
+        style = getComputedStyle(document.body),
+        target = window.visualViewport !== void 0
+          ? window.visualViewport
+          : window
 
       // if css props available
       if (style.getPropertyValue('--q-size-sm')) {
         SIZE_LIST.forEach(name => {
-          this.sizes[name] = parseInt(style.getPropertyValue(`--q-size-${name}`), 10)
+          this.sizes[ name ] = parseInt(style.getPropertyValue(`--q-size-${ name }`), 10)
         })
       }
 
       this.setSizes = sizes => {
         SIZE_LIST.forEach(name => {
-          if (sizes[name]) {
-            this.sizes[name] = sizes[name]
+          if (sizes[ name ]) {
+            this.sizes[ name ] = sizes[ name ]
           }
         })
-        update(true)
+        this.__update(true)
       }
 
       this.setDebounce = delay => {
-        const fn = () => { update() }
-        updateEvt && window.removeEventListener('resize', updateEvt, listenOpts.passive)
+        updateEvt !== void 0 && target.removeEventListener('resize', updateEvt, passive)
         updateEvt = delay > 0
-          ? debounce(fn, delay)
-          : fn
-        window.addEventListener('resize', updateEvt, listenOpts.passive)
+          ? debounce(this.__update, delay)
+          : this.__update
+        target.addEventListener('resize', updateEvt, passive)
       }
 
       this.setDebounce(updateDebounce)
@@ -123,17 +158,19 @@ export default {
         updateSizes = void 0 // free up memory
       }
       else {
-        update()
+        this.__update()
       }
+
+      // due to optimizations, this would be left out otherwise
+      classes === true && this.name === 'xs'
+        && document.body.classList.add('screen--xs')
     }
 
-    if (fromSSR === true) {
-      queues.takeover.push(start)
+    if (isRuntimeSsrPreHydration.value === true) {
+      onSSRHydrated.push(start)
     }
     else {
       start()
     }
-
-    Vue.util.defineReactive($q, 'screen', this)
   }
-}
+})

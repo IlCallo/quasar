@@ -1,6 +1,6 @@
 export default {
   isoName: 'sr',
-  nativeName: 'српски језик',
+  nativeName: 'srpski jezik',
   label: {
     clear: 'Obriši',
     ok: 'OK',
@@ -22,22 +22,21 @@ export default {
     months: 'Januar_Februar_Mart_April_Maj_Jun_Jul_Avgust_Septembar_Oktobar_Novembar_Decembar'.split('_'),
     monthsShort: 'Jan_Feb_Mar_Apr_Maj_Jun_Jul_Avg_Sep_Okt_Nov_Dec'.split('_'),
     firstDayOfWeek: 1, // 0-6, 0 - Sunday, 1 Monday, ...
-    format24h: true
+    format24h: true,
+    pluralDay: 'dana'
   },
   table: {
     noData: 'Nema podataka',
     noResults: 'Nema odgovarajućih zapisa',
     loading: 'Učitavanje...',
-    selectedRecords: function (rows) {
-      return rows > 1
+    selectedRecords: rows => (
+      rows > 1
         ? rows + ' izabranih redova.'
         : (rows === 0 ? 'Nema' : '1') + ' izabranih redova.'
-    },
+    ),
     recordsPerPage: 'Redova po stranici:',
     allRows: 'Sve',
-    pagination: function (start, end, total) {
-      return start + '-' + end + ' od ' + total
-    },
+    pagination: (start, end, total) => start + '-' + end + ' od ' + total,
     columns: 'Kolone'
   },
   editor: {
@@ -67,12 +66,12 @@ export default {
     hr: 'Ubaciti vodoravni lenjir',
     undo: 'Poništiti',
     redo: 'Vratiti',
-    header1: 'Naslov 1',
-    header2: 'Naslov 2',
-    header3: 'Naslov 3',
-    header4: 'Naslov 4',
-    header5: 'Naslov 5',
-    header6: 'Naslov 6',
+    heading1: 'Naslov 1',
+    heading2: 'Naslov 2',
+    heading3: 'Naslov 3',
+    heading4: 'Naslov 4',
+    heading5: 'Naslov 5',
+    heading6: 'Naslov 6',
     paragraph: 'Odlomak',
     code: 'Kod',
     size1: 'Najmanje',
@@ -82,8 +81,8 @@ export default {
     size5: 'Veliko',
     size6: 'Već',
     size7: 'Najveće',
-    defaultFont: 'Zadani font',
-    viewSource: 'Погледај извор'
+    defaultFont: 'Podrazumevani font',
+    viewSource: 'Pogledaj izvor'
   },
   tree: {
     noNodes: 'Nema nijednog čvora',

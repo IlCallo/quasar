@@ -1,40 +1,46 @@
-const
-  fs = require('fs'),
-  path = require('path'),
-  compileTemplate = require('lodash.template')
+const fs = require('fs')
+const path = require('path')
+const compileTemplate = require('lodash.template')
 
-const
-  log = require('./helpers/logger')('app:generator')
-  appPaths = require('./app-paths'),
-  quasarFolder = appPaths.resolve.app('.quasar')
+const { log } = require('./helpers/logger')
+const appPaths = require('./app-paths')
+const quasarFolder = appPaths.resolve.app('.quasar')
 
 class Generator {
-  constructor (quasarConfig) {
-    const { ctx, preFetch } = quasarConfig.getBuildConfig()
+  constructor (quasarConfFile) {
+    const { ctx } = quasarConfFile.quasarConf
 
     this.alreadyGenerated = false
-    this.quasarConfig = quasarConfig
+    this.quasarConfFile = quasarConfFile
 
     const paths = [
       'app.js',
       'client-entry.js',
-      'import-quasar.js'
+      'client-prefetch.js',
+      'quasar-user-options.js'
     ]
 
-    if (preFetch) {
-      paths.push('client-prefetch.js')
-    }
     if (ctx.mode.ssr) {
-      paths.push('server-entry.js')
+      paths.push(
+        'server-entry.js',
+        'ssr-pwa.js',
+        'ssr-middlewares.js'
+      )
+
+      if (ctx.prod) {
+        paths.push(
+          'ssr-prod-webserver.js'
+        )
+      }
     }
 
     this.files = paths.map(file => {
-      const
-        content = fs.readFileSync(
-          appPaths.resolve.cli(`templates/entry/${file}`),
-          'utf-8'
-        ),
-        filename = path.basename(file)
+      const content = fs.readFileSync(
+        appPaths.resolve.cli(`templates/entry/${file}`),
+        'utf-8'
+      )
+
+      const filename = path.basename(file)
 
       return {
         filename,
@@ -45,8 +51,7 @@ class Generator {
   }
 
   build () {
-    log(`Generating Webpack entry point`)
-    const data = this.quasarConfig.getBuildConfig()
+    const data = this.quasarConfFile.quasarConf
 
     // ensure .quasar folder
     if (!fs.existsSync(quasarFolder)) {

@@ -1,45 +1,57 @@
-import Vue from 'vue'
+import { h, defineComponent, computed, Transition, getCurrentInstance } from 'vue'
 
-import TransitionMixin from '../../mixins/transition.js'
 import QSpinner from '../spinner/QSpinner.js'
 
-export default Vue.extend({
+import useDark, { useDarkProps } from '../../composables/private/use-dark.js'
+import useTransition, { useTransitionProps } from '../../composables/private/use-transition.js'
+
+export default defineComponent({
   name: 'QInnerLoading',
 
-  mixins: [ TransitionMixin ],
-
   props: {
+    ...useDarkProps,
+    ...useTransitionProps,
+
     showing: Boolean,
     color: String,
 
     size: {
-      type: [String, Number],
+      type: [ String, Number ],
       default: 42
-    },
-
-    dark: Boolean
+    }
   },
 
-  render (h) {
-    const content = this.$scopedSlots.default !== void 0
-      ? this.$scopedSlots.default()
-      : [
-        h(QSpinner, {
-          props: {
-            size: this.size,
-            color: this.color
-          }
-        })
-      ]
+  setup (props, { slots }) {
+    const vm = getCurrentInstance()
+    const isDark = useDark(props, vm.proxy.$q)
 
-    return h('transition', {
-      props: { name: this.transition }
-    }, [
-      this.showing === true ? h('div', {
-        staticClass: 'q-inner-loading absolute-full column flex-center',
-        class: this.dark ? 'q-inner-loading--dark' : null,
-        on: this.$listeners
-      }, content) : null
-    ])
+    const { transition, transitionStyle } = useTransition(props, computed(() => props.showing))
+
+    const classes = computed(() =>
+      'q-inner-loading absolute-full column flex-center'
+      + (isDark.value === true ? ' q-inner-loading--dark' : '')
+    )
+
+    function getContent () {
+      return props.showing === true
+        ? h(
+            'div',
+            { class: classes.value, style: transitionStyle.value },
+            slots.default !== void 0
+              ? slots.default()
+              : [
+                  h(QSpinner, {
+                    size: props.size,
+                    color: props.color
+                  })
+                ]
+          )
+        : null
+    }
+
+    return () => h(Transition, {
+      name: transition.value,
+      appear: true
+    }, getContent)
   }
 })

@@ -1,14 +1,25 @@
-import Vue from 'vue'
+import { h, defineComponent, computed } from 'vue'
 
-import slot from '../../utils/slot.js'
+import { hSlot } from '../../utils/private/render.js'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'QCardSection',
 
-  render (h) {
-    return h('div', {
-      staticClass: 'q-card__section',
-      on: this.$listeners
-    }, slot(this, 'default'))
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    },
+
+    horizontal: Boolean
+  },
+
+  setup (props, { slots }) {
+    const classes = computed(() =>
+      'q-card__section'
+      + ` q-card__section--${ props.horizontal === true ? 'horiz row no-wrap' : 'vert' }`
+    )
+
+    return () => h(props.tag, { class: classes.value }, hSlot(slots.default))
   }
 })

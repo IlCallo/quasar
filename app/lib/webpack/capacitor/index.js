@@ -1,10 +1,16 @@
-const
-  injectHtml = require('../inject.html'),
-  injectClientSpecifics = require('../inject.client-specifics'),
-  injectHotUpdate = require('../inject.hot-update')
+const appPaths = require('../../app-paths')
+const injectHtml = require('../inject.html')
+
+const capNodeModules = appPaths.resolve.capacitor('node_modules')
 
 module.exports = function (chain, cfg) {
+  // need to also look into /src-capacitor
+  // for deps like @capacitor/core
+  chain.resolve.modules
+    .merge([ capNodeModules ])
+
+  chain.resolveLoader.modules
+    .merge([ capNodeModules ])
+
   injectHtml(chain, cfg)
-  injectClientSpecifics(chain, cfg)
-  injectHotUpdate(chain, cfg)
 }

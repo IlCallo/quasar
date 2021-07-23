@@ -1,5 +1,7 @@
 {
-  "mixins": [ "mixins/ripple" ],
+  "meta": {
+    "docsUrl": "https://v2.quasar.dev/vue-components/chip"
+  },
 
   "props": {
     "dense": {
@@ -10,8 +12,11 @@
       "type": "String",
       "desc": "QChip size name or a CSS unit including unit name",
       "examples": [ "xs", "sm", "md", "lg", "xl", "25px", "2rem" ],
-      "category": "style",
-      "addedIn": "v1.2.2"
+      "category": "style"
+    },
+
+    "dark": {
+      "extends": "dark"
     },
 
     "icon": {
@@ -19,6 +24,14 @@
     },
 
     "icon-right": {
+      "extends": "icon"
+    },
+
+    "icon-remove": {
+      "extends": "icon"
+    },
+
+    "icon-selected": {
       "extends": "icon"
     },
 
@@ -37,9 +50,11 @@
       "extends": "text-color"
     },
 
-    "value": {
+    "model-value": {
+      "extends": "model-value",
       "type": "Boolean",
       "desc": "Model of the component determining if QChip should be rendered or not",
+      "required": false,
       "default": true,
       "category": "model"
     },
@@ -48,6 +63,9 @@
       "type": "Boolean",
       "sync": true,
       "desc": "Model for QChip if it's selected or not",
+      "examples": [
+        "v-model:selected=\"myState\""
+      ],
       "category": "model"
     },
 
@@ -72,6 +90,10 @@
       "type": "Boolean",
       "desc": "If set, then it displays a 'remove' icon that when clicked the QChip emits 'remove' event",
       "category": "state"
+    },
+
+    "ripple": {
+      "extends": "ripple"
     },
 
     "tabindex": {
@@ -102,7 +124,7 @@
     },
 
     "update:selected": {
-      "desc": "Used by Vue on 'selected.sync' prop for updating its value",
+      "desc": "Used by Vue on 'v-model:selected' for updating its value",
       "params": {
         "state": {
           "type": "Boolean",

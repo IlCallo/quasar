@@ -1,33 +1,36 @@
-import Vue from 'vue'
+import { h, defineComponent, computed } from 'vue'
 
-export default Vue.extend({
+import useRatio, { useRatioProps } from '../../composables/private/use-ratio.js'
+
+export default defineComponent({
   name: 'QVideo',
 
   props: {
+    ...useRatioProps,
+
     src: {
       type: String,
       required: true
     }
   },
 
-  computed: {
-    iframeData () {
-      return {
-        attrs: {
-          src: this.src,
-          frameborder: '0',
-          allowfullscreen: true
-        }
-      }
-    }
-  },
+  setup (props) {
+    const ratioStyle = useRatio(props)
 
-  render (h) {
-    return h('div', {
-      staticClass: 'q-video',
-      on: this.$listeners
+    const classes = computed(() =>
+      'q-video'
+      + (props.ratio !== void 0 ? ' q-video--responsive' : '')
+    )
+
+    return () => h('div', {
+      class: classes.value,
+      style: ratioStyle.value
     }, [
-      h('iframe', this.iframeData)
+      h('iframe', {
+        src: props.src,
+        frameborder: '0',
+        allowfullscreen: true
+      })
     ])
   }
 })

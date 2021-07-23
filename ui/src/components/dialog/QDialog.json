@@ -1,5 +1,9 @@
 {
-  "mixins": [ "mixins/model-toggle", "mixins/portal" ],
+  "mixins": [ "composables/private/use-model-toggle", "composables/private/use-portal" ],
+
+  "meta": {
+    "docsUrl": "https://v2.quasar.dev/vue-components/dialog"
+  },
 
   "props": {
     "persistent": {
@@ -67,14 +71,12 @@
 
     "transition-show": {
       "extends": "transition",
-      "default": "scale",
-      "category": "behavior"
+      "default": "scale"
     },
 
     "transition-hide": {
       "extends": "transition",
-      "default": "scale",
-      "category": "behavior"
+      "default": "scale"
     },
 
     "square": {
@@ -102,7 +104,7 @@
     },
 
     "escape-key": {
-      "desc": "Emitted when ESC key is pressed; Does not gets emitted if Dialog is 'persistent' or it has 'no-esc-key' set"
+      "desc": "Emitted when ESC key is pressed; Does not get emitted if Dialog is 'persistent' or it has 'no-esc-key' set"
     }
   },
 
@@ -113,6 +115,12 @@
 
     "shake": {
       "desc": "Shakes dialog"
+    }
+  },
+
+  "slots": {
+    "default": {
+      "extends": "default"
     }
   }
 }

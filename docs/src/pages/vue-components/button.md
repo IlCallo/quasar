@@ -1,6 +1,7 @@
 ---
 title: Button
 desc: The QBtn Vue component is a button with features like shaping, loading state, ripple and more.
+keys: QBtn
 related:
   - /vue-components/button-group
   - /vue-components/button-dropdown
@@ -12,27 +13,51 @@ The button component also comes with a spinner or loading effect. You would use 
 
 When not disabled or spinning, QBtn emits a `@click` event, as soon as it is clicked or tapped.
 
-## Installation
-<doc-installation components="QBtn" />
+## QBtn API
+
+<doc-api file="QBtn" />
 
 ## Usage
+
+### Standard
+
 <doc-example title="Standard buttons" file="QBtn/Standard" />
+
+### Custom colors
 
 <doc-example title="Custom colors" file="QBtn/CustomColor" />
 
-<doc-example title="With icons" file="QBtn/WithIcons" />
+### With icon
+
+<doc-example title="With icon" file="QBtn/WithIcons" />
+
+### Round
 
 <doc-example title="Round buttons" file="QBtn/Round" />
 
+### Custom content
+
 <doc-example title="Custom content" file="QBtn/CustomContent" />
+
+<doc-example title="Truncate label" file="QBtn/TruncateLabel" />
 
 ### Design
 
 <doc-example title="Button design" file="QBtn/ButtonDesign" />
 
+### Alignment
+
 <doc-example title="Button alignment" file="QBtn/ButtonAlignment" />
 
+### Size
+
 <doc-example title="Button size" file="QBtn/ButtonSize" />
+
+### Padding
+
+The default padding is "xs md". However, you can use `padding` prop to customize it:
+
+<doc-example title="Button padding" file="QBtn/ButtonPadding" />
 
 ### Progress related
 
@@ -52,11 +77,11 @@ Should you wish, you can also display a deterministic progress within the button
 
 The two examples below won't work with UMD version (so in Codepen/jsFiddle too) because it relies on the existence of Vue Router.
 
-<doc-example title="Links" file="QBtn/Links" />
+<doc-example title="Links" file="QBtn/Links" no-edit />
 
 For more convoluted use-cases, you can also directly use the native Vue `<router-link>` component to wrap a QBtn. This also gives the opportunity to control the state according to app's current route:
 
-<doc-example title="Scoped slot of RouterLink" file="QBtn/RouterLink" />
+<doc-example title="Scoped slot of RouterLink" file="QBtn/RouterLinkExample" no-edit />
 
 ### Other options
 
@@ -74,6 +99,3 @@ When placing a QBtn with type "submit" in one of the "before", "after", "prepend
 :::
 
 <doc-example title="Form Submission" file="QBtn/FormSubmission" />
-
-## QBtn API
-<doc-api file="QBtn" />

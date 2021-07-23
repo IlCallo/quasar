@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "docsUrl": "https://v2.quasar.dev/layout/layout"
+  },
+
   "props": {
     "view": {
       "type": "String",
@@ -55,9 +59,10 @@
           "definition": {
             "position": {
               "type": "Number",
-              "desc": "Scroll offset (from top)",
-              "examples": [ 575 ]
+              "desc": "Scroll offset from top (vertical)",
+              "examples": [ 120 ]
             },
+
             "direction": {
               "type": "String",
               "desc": "Direction of scroll",
@@ -67,10 +72,16 @@
               "type": "Boolean",
               "desc": "Has scroll direction changed since event was last emitted?"
             },
-            "inflexionPosition": {
+            "delta": {
               "type": "Number",
-              "desc": "Last scroll offset where scroll direction has changed",
-              "examples": [ 575 ]
+              "desc": "Vertical delta distance since event was last emitted",
+              "examples": [ 120 ]
+            },
+
+            "inflectionPoint": {
+              "type": "Number",
+              "desc": "Scroll offset from top (vertical)",
+              "examples": [ 120 ]
             }
           }
         }
@@ -83,7 +94,7 @@
         "height": {
           "type": "Number",
           "desc": "New scroll height of layout",
-          "examples": [ 1442 ]
+          "examples": [1442]
         }
       }
     }

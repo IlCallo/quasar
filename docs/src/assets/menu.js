@@ -31,7 +31,6 @@ const gettingStarted = [
   },
   {
     name: 'Release notes',
-    badge: 'updated',
     path: 'release-notes'
   },
   {
@@ -40,11 +39,11 @@ const gettingStarted = [
   },
   {
     name: 'Upgrade guide',
+    badge: 'new',
     path: 'upgrade-guide'
   },
   {
     name: 'VS Code Configuration',
-    badge: 'new',
     path: 'vs-code-configuration'
   }
 ]
@@ -56,30 +55,26 @@ const contributionGuide = [
   },
   {
     name: 'Running Projects',
-    path: 'running-projects',
-    badge: 'new'
+    path: 'running-projects'
   },
   {
     name: 'Start a New Project',
-    path: 'new-project',
-    badge: 'new'
+    path: 'new-project'
   },
   {
     name: 'Project Maintainer Role',
-    path: 'project-maintainer',
-    badge: 'new'
+    path: 'project-maintainer'
   },
   {
     name: 'Commit Conventions',
-    path: 'commit-conventions',
-    badge: 'new'
+    path: 'commit-conventions'
   }
 ]
 
 const options = [
   {
-    name: 'Vue Prototype Injections',
-    path: 'vue-prototype-injections'
+    name: 'The $q object',
+    path: 'the-q-object'
   },
   {
     name: 'App Icons',
@@ -124,26 +119,23 @@ const options = [
   {
     name: 'Transitions',
     path: 'transitions'
-  },
-  {
-    name: 'Global Event Bus',
-    path: 'global-event-bus'
   }
 ]
 
 const security = [
   {
-    name: `DO's and DON'Ts`,
+    name: 'DO\'s and DON\'Ts',
     path: 'dos-and-donts'
   },
   {
     name: 'Report a vulnerability',
     path: 'report-a-vulnerability'
-  },
-  {
-    name: 'Get help!',
-    path: 'get-help'
   }
+  // Re-enable when ready again
+  // {
+  //   name: 'Get help!',
+  //   path: 'get-help'
+  // }
 ]
 
 const cli = [
@@ -156,79 +148,72 @@ const cli = [
     path: 'quasar-conf-js'
   },
   {
-    name: 'App Icons',
-    path: 'app-icons'
+    name: 'Browser Compatibility',
+    path: 'browser-compatibility'
+  },
+  {
+    name: 'Supporting TypeScript',
+    path: 'supporting-ts'
+  },
+  {
+    name: 'Directory Structure',
+    path: 'directory-structure'
+  },
+  {
+    name: 'Build Commands',
+    path: 'build-commands'
+  },
+  {
+    name: 'Commands List',
+    path: 'commands-list'
+  },
+  {
+    name: 'CSS Preprocessors',
+    path: 'css-preprocessors'
+  },
+  {
+    name: 'Routing',
+    path: 'routing'
+  },
+  {
+    name: 'Lazy Loading - Code Splitting',
+    path: 'lazy-loading'
+  },
+  {
+    name: 'Handling Assets',
+    path: 'handling-assets'
+  },
+  {
+    name: 'Boot Files',
+    path: 'boot-files'
+  },
+  {
+    name: 'Prefetch Feature',
+    path: 'prefetch-feature'
+  },
+  {
+    name: 'API Proxying',
+    path: 'api-proxying'
+  },
+  {
+    name: 'Handling Webpack',
+    path: 'handling-webpack'
+  },
+  {
+    name: 'Handling process.env',
+    path: 'handling-process-env'
+  },
+  {
+    name: 'Vuex Store',
+    path: 'vuex-store'
+  },
+  {
+    name: 'Linter',
+    path: 'linter'
   },
   {
     name: 'Testing & Auditing',
     path: 'testing-and-auditing'
-  },
-  {
-    name: 'CLI Documentation',
-    path: 'cli-documentation',
-    children: [
-      {
-        name: 'Directory Structure',
-        path: 'directory-structure'
-      },
-      {
-        name: 'Build Commands',
-        path: 'build-commands'
-      },
-      {
-        name: 'Commands List',
-        path: 'commands-list'
-      },
-      {
-        name: 'CSS Preprocessors',
-        badge: 'new',
-        path: 'css-preprocessors'
-      },
-      {
-        name: 'Routing',
-        path: 'routing'
-      },
-      {
-        name: 'Lazy Loading - Code Splitting',
-        path: 'lazy-loading'
-      },
-      {
-        name: 'Handling Assets',
-        path: 'handling-assets'
-      },
-      {
-        name: 'Boot Files',
-        path: 'boot-files'
-      },
-      {
-        name: 'Prefetch Feature',
-        path: 'prefetch-feature'
-      },
-      {
-        name: 'API Proxying',
-        path: 'api-proxying'
-      },
-      {
-        name: 'Handling Webpack',
-        path: 'handling-webpack'
-      },
-      {
-        name: 'Handling process.env',
-        path: 'handling-process-env'
-      },
-      {
-        name: 'Vuex Store',
-        path: 'vuex-store'
-      },
-      {
-        name: 'Linter',
-        path: 'linter'
-      },
-      {
-        name: 'Supporting IE',
-        path: 'supporting-ie'
-      }
-    ]
   },
   {
     name: 'Developing SPA',
@@ -265,8 +250,32 @@ const cli = [
         path: 'writing-universal-code'
       },
       {
+        name: 'Upgrade guide',
+        badge: 'new',
+        path: 'ssr-upgrade-guide'
+      },
+      {
+        name: 'Preparation',
+        path: 'preparation'
+      },
+      {
         name: 'Configuring SSR',
         path: 'configuring-ssr'
+      },
+      {
+        name: 'ssrContext',
+        badge: 'update',
+        path: 'ssr-context'
+      },
+      {
+        name: 'SSR Middleware',
+        badge: 'new',
+        path: 'ssr-middleware'
+      },
+      {
+        name: 'Vue SSR Directives',
+        badge: 'new',
+        path: 'vue-ssr-directives'
       },
       {
         name: 'App Icons for SSR',
@@ -297,6 +306,11 @@ const cli = [
         path: 'build-commands'
       },
       {
+        name: 'SSR with Typescript',
+        badge: 'new',
+        path: 'ssr-with-typescript'
+      },
+      {
         name: 'Deploying',
         path: 'deploying'
       }
@@ -311,8 +325,20 @@ const cli = [
         path: 'introduction'
       },
       {
+        name: 'Preparation',
+        path: 'preparation'
+      },
+      {
+        name: 'Build Commands',
+        path: 'build-commands'
+      },
+      {
         name: 'Configuring PWA',
         path: 'configuring-pwa'
+      },
+      {
+        name: 'HMR for PWA',
+        path: 'hmr-for-dev'
       },
       {
         name: 'App Icons for PWA',
@@ -323,14 +349,62 @@ const cli = [
         path: 'handling-service-worker'
       },
       {
-        name: 'Build Commands',
-        path: 'build-commands'
+        name: 'PWA with Typescript',
+        badge: 'new',
+        path: 'pwa-with-typescript'
       }
     ]
   },
   {
     name: 'Developing Mobile Apps',
     path: 'developing-mobile-apps'
+  },
+  {
+    name: 'Developing Capacitor Apps',
+    path: 'developing-capacitor-apps',
+    children: [
+      {
+        name: 'Introduction',
+        path: 'introduction'
+      },
+      {
+        name: 'Preparation',
+        path: 'preparation'
+      },
+      {
+        name: 'Capacitor versions',
+        badge: 'new',
+        path: 'capacitor-version-support'
+      },
+      {
+        name: 'Configuring Capacitor',
+        path: 'configuring-capacitor'
+      },
+      {
+        name: 'App Icons for Capacitor',
+        path: 'app-icons-capacitor'
+      },
+      {
+        name: 'Capacitor API',
+        path: 'capacitor-api'
+      },
+      {
+        name: 'Build Commands',
+        path: 'build-commands'
+      },
+      {
+        name: 'Troubleshooting and Tips',
+        path: 'troubleshooting-and-tips'
+      },
+      {
+        name: 'Managing Google Analytics',
+        path: 'managing-google-analytics'
+      },
+      {
+        name: 'Publishing to Store',
+        path: 'publishing-to-store'
+      }
+    ]
   },
   {
     name: 'Developing Cordova Apps',
@@ -375,54 +449,17 @@ const cli = [
     ]
   },
   {
-    name: 'Developing Capacitor Apps',
-    path: 'developing-capacitor-apps',
-    children: [
-      {
-        name: 'Introduction',
-        path: 'introduction'
-      },
-      {
-        name: 'Preparation',
-        path: 'preparation'
-      },
-      {
-        name: 'Configuring Capacitor',
-        path: 'configuring-capacitor'
-      },
-      {
-        name: 'App Icons for Capacitor',
-        path: 'app-icons-capacitor'
-      },
-      {
-        name: 'Capacitor API',
-        path: 'capacitor-api'
-      },
-      {
-        name: 'Build Commands',
-        path: 'build-commands'
-      },
-      {
-        name: 'Troubleshooting and Tips',
-        path: 'troubleshooting-and-tips'
-      },
-      {
-        name: 'Managing Google Analytics',
-        path: 'managing-google-analytics'
-      },
-      {
-        name: 'Publishing to Store',
-        path: 'publishing-to-store'
-      }
-    ]
-  },
-  {
     name: 'Developing Electron Apps',
     path: 'developing-electron-apps',
     children: [
       {
         name: 'Introduction',
         path: 'introduction'
+      },
+      {
+        name: 'Upgrade guide',
+        path: 'electron-upgrade-guide',
+        badge: 'new'
       },
       {
         name: 'Preparation',
@@ -437,20 +474,29 @@ const cli = [
         path: 'app-icons-electron'
       },
       {
-        name: 'Electron Packages',
-        path: 'electron-packages'
-      },
-      {
         name: 'Build Commands',
         path: 'build-commands'
       },
       {
-        name: 'Electron Static Assets',
-        path: 'electron-static-assets'
+        name: 'Preload Script',
+        path: 'electron-preload-script'
+      },
+      {
+        name: 'Electron Packages',
+        path: 'electron-packages'
+      },
+      {
+        name: 'Accessing files',
+        path: 'electron-accessing-files'
       },
       {
         name: 'Frameless Electron Window',
         path: 'frameless-electron-window'
+      },
+      {
+        name: 'Electron with Typescript',
+        badge: 'new',
+        path: 'electron-with-typescript'
       },
       {
         name: 'Electron Security Concerns',
@@ -463,12 +509,85 @@ const cli = [
     ]
   },
   {
+    name: 'Developing Browser Extensions',
+    path: 'developing-browser-extensions',
+    children: [
+      {
+        name: 'Introduction',
+        path: 'introduction'
+      },
+      {
+        name: 'Preparation',
+        path: 'preparation'
+      },
+      {
+        name: 'Configuring BEX',
+        path: 'configuring-bex'
+      },
+      {
+        name: 'App Icons for BEX',
+        path: 'app-icons-browser-extension'
+      },
+      {
+        name: 'Build Commands',
+        path: 'build-commands'
+      },
+      {
+        name: 'Types of BEX',
+        path: 'types-of-bex'
+      },
+      {
+        name: 'BEX Communication / Events',
+        path: 'bex-communication'
+      },
+      {
+        name: 'Background Hooks',
+        path: 'background-hooks'
+      },
+      {
+        name: 'Content Hooks',
+        path: 'content-hooks'
+      },
+      {
+        name: 'DOM Hooks',
+        path: 'dom-hooks'
+      }
+    ]
+  },
+  {
     name: 'Ajax Requests',
     path: 'ajax-requests'
   },
   {
     name: 'Opening Dev Server To Public',
     path: 'opening-dev-server-to-public'
+  }
+]
+
+const icongenie = [
+  {
+    name: 'Introduction',
+    path: 'introduction'
+  },
+
+  {
+    name: 'Installation / Upgrade notes',
+    path: 'installation'
+  },
+
+  {
+    name: 'Command list',
+    path: 'command-list'
+  },
+
+  {
+    name: 'App Icons List',
+    path: 'app-icons-list'
+  },
+
+  {
+    name: 'Profile files',
+    path: 'profile-files'
   }
 ]
 
@@ -483,8 +602,11 @@ const style = [
   },
   {
     name: 'Theme Builder',
-    badge: 'new',
     path: 'theme-builder'
+  },
+  {
+    name: 'Dark Mode',
+    path: 'dark-mode'
   },
   {
     name: 'Spacing',
@@ -499,6 +621,10 @@ const style = [
     path: 'breakpoints'
   },
   {
+    name: 'Body classes',
+    path: 'body-classes'
+  },
+  {
     name: 'Visibility',
     path: 'visibility'
   },
@@ -508,12 +634,7 @@ const style = [
   },
   {
     name: 'Sass/SCSS Variables',
-    badge: 'new',
     path: 'sass-scss-variables'
-  },
-  {
-    name: 'Stylus Variables',
-    path: 'stylus-variables'
   },
   {
     name: 'Other Helper Classes',
@@ -544,8 +665,11 @@ const layout = [
         path: 'gutter'
       },
       {
+        name: 'Flexbox patterns',
+        path: 'flexbox-patterns'
+      },
+      {
         name: 'Flex Playground',
-        badge: 'new',
         path: 'flex-playground'
       }
     ]
@@ -572,13 +696,11 @@ const layout = [
   },
   {
     name: 'Layout Builder',
-    badge: 'new',
     external: true,
     path: '/layout-builder'
   },
   {
     name: 'Layout Gallery',
-    badge: 'new',
     path: 'gallery'
   },
   {
@@ -588,96 +710,6 @@ const layout = [
   {
     name: 'Page Scroller',
     path: 'page-scroller'
-  },
-  {
-    name: 'Floating Action Button',
-    path: 'floating-action-button'
-  }
-]
-
-const directives = [
-  {
-    name: 'Close Popup',
-    path: 'close-popup'
-  },
-  {
-    name: 'Go Back (Handling Back Button)',
-    path: 'go-back'
-  },
-  {
-    name: 'Material Ripples',
-    path: 'material-ripple'
-  },
-  {
-    name: 'Scroll',
-    path: 'scroll'
-  },
-  {
-    name: 'Scroll Fire',
-    path: 'scroll-fire'
-  },
-  {
-    name: 'Touch Hold',
-    path: 'touch-hold'
-  },
-  {
-    name: 'Touch Pan',
-    path: 'touch-pan'
-  },
-  {
-    name: 'Touch Repeat',
-    path: 'touch-repeat'
-  },
-  {
-    name: 'Touch Swipe',
-    path: 'touch-swipe'
-  }
-]
-
-const plugins = [
-  {
-    name: 'Addressbar Color',
-    path: 'addressbar-color'
-  },
-  {
-    name: 'App Fullscreen',
-    path: 'app-fullscreen'
-  },
-  {
-    name: 'App Visibility',
-    path: 'app-visibility'
-  },
-  {
-    name: 'Bottom Sheet',
-    path: 'bottom-sheet'
-  },
-  {
-    name: 'Cookies',
-    path: 'cookies'
-  },
-  {
-    name: 'Dialog',
-    path: 'dialog'
-  },
-  {
-    name: 'Loading',
-    path: 'loading'
-  },
-  {
-    name: 'Loading Bar',
-    path: 'loading-bar'
-  },
-  {
-    name: 'Local/Session Storage',
-    path: 'web-storage'
-  },
-  {
-    name: 'Meta',
-    path: 'meta'
-  },
-  {
-    name: 'Notify',
-    path: 'notify'
   }
 ]
 
@@ -761,7 +793,12 @@ const components = [
     path: 'expansion-item'
   },
   {
+    name: 'Floating Action Button',
+    path: 'floating-action-button'
+  },
+  {
     name: 'Form Components',
+    opened: true,
     listPath: 'form-components',
     children: [
       {
@@ -771,6 +808,10 @@ const components = [
       {
         name: 'Select',
         path: 'select'
+      },
+      {
+        name: 'File picker',
+        path: 'file-picker'
       },
       {
         name: 'Form',
@@ -835,6 +876,10 @@ const components = [
     path: 'inner-loading'
   },
   {
+    name: 'Intersection',
+    path: 'intersection'
+  },
+  {
     name: 'Knob',
     path: 'knob'
   },
@@ -897,12 +942,20 @@ const components = [
     path: 'rating'
   },
   {
+    name: 'Responsive',
+    path: 'responsive'
+  },
+  {
     name: 'Scroll Area',
     path: 'scroll-area'
   },
   {
     name: 'Separator',
     path: 'separator'
+  },
+  {
+    name: 'Skeleton',
+    path: 'skeleton'
   },
   {
     name: 'Slide Item',
@@ -966,8 +1019,124 @@ const components = [
   },
   {
     name: 'Virtual Scroll',
-    badge: 'new',
     path: 'virtual-scroll'
+  }
+]
+
+const directives = [
+  {
+    name: 'Close Popup',
+    path: 'close-popup'
+  },
+  {
+    name: 'Intersection',
+    path: 'intersection'
+  },
+  {
+    name: 'Material Ripples',
+    path: 'material-ripple'
+  },
+  {
+    name: 'Mutation',
+    path: 'mutation'
+  },
+  {
+    name: 'Morph',
+    path: 'morph'
+  },
+  {
+    name: 'Scroll',
+    path: 'scroll'
+  },
+  {
+    name: 'Scroll Fire',
+    path: 'scroll-fire'
+  },
+  {
+    name: 'Touch Hold',
+    path: 'touch-hold'
+  },
+  {
+    name: 'Touch Pan',
+    path: 'touch-pan'
+  },
+  {
+    name: 'Touch Repeat',
+    path: 'touch-repeat'
+  },
+  {
+    name: 'Touch Swipe',
+    path: 'touch-swipe'
+  }
+]
+
+const plugins = [
+  {
+    name: 'Addressbar Color',
+    path: 'addressbar-color'
+  },
+  {
+    name: 'App Fullscreen',
+    path: 'app-fullscreen'
+  },
+  {
+    name: 'App Visibility',
+    path: 'app-visibility'
+  },
+  {
+    name: 'Bottom Sheet',
+    path: 'bottom-sheet'
+  },
+  {
+    name: 'Cookies',
+    path: 'cookies'
+  },
+  {
+    name: 'Dark',
+    path: 'dark'
+  },
+  {
+    name: 'Dialog',
+    path: 'dialog'
+  },
+  {
+    name: 'Loading',
+    path: 'loading'
+  },
+  {
+    name: 'Loading Bar',
+    path: 'loading-bar'
+  },
+  {
+    name: 'Local/Session Storage',
+    path: 'web-storage'
+  },
+  {
+    name: 'Meta',
+    path: 'meta'
+  },
+  {
+    name: 'Notify',
+    path: 'notify'
+  }
+]
+
+const composables = [
+  {
+    name: 'useQuasar',
+    path: 'use-quasar'
+  },
+  {
+    name: 'useDialogPluginComponent',
+    path: 'use-dialog-plugin-component'
+  },
+  {
+    name: 'useFormChild',
+    path: 'use-form-child'
+  },
+  {
+    name: 'useMeta',
+    path: 'use-meta'
   }
 ]
 
@@ -1030,7 +1199,6 @@ const appExtensions = [
       },
       {
         name: 'Starter kit equivalent',
-        badge: 'new',
         path: 'starter-kit-equivalent'
       },
       {
@@ -1055,6 +1223,10 @@ const utils = [
     path: 'dom-utils'
   },
   {
+    name: 'Morph Utils',
+    path: 'morph-utils'
+  },
+  {
     name: 'Formatter Utils',
     path: 'formatter-utils'
   },
@@ -1070,7 +1242,7 @@ const utils = [
 
 module.exports = [
   {
-    name: 'Introduction to Quasar',
+    name: 'Why Quasar?',
     icon: 'room',
     path: 'introduction-to-quasar'
   },
@@ -1085,10 +1257,15 @@ module.exports = [
     path: 'why-donate'
   },
   {
+    name: 'API Explorer',
+    icon: 'travel_explore',
+    badge: 'new',
+    path: 'api-explorer'
+  },
+  {
     name: 'Video Tutorials',
     icon: 'ondemand_video',
-    path: 'video-tutorials',
-    badge: 'new'
+    path: 'video-tutorials'
   },
   {
     name: 'Meet the Team',
@@ -1108,22 +1285,10 @@ module.exports = [
     children: contributionGuide
   },
   {
-    name: 'Quasar Options & Helpers',
+    name: 'Options & Helpers',
     icon: 'tune',
     path: 'options',
     children: options
-  },
-  {
-    name: 'Security',
-    icon: 'security',
-    path: 'security',
-    children: security
-  },
-  {
-    name: 'Quasar CLI',
-    icon: 'build',
-    path: 'quasar-cli',
-    children: cli
   },
   {
     name: 'Style & Identity',
@@ -1154,6 +1319,30 @@ module.exports = [
     icon: 'extension',
     path: 'quasar-plugins',
     children: plugins
+  },
+  {
+    name: 'Vue Composables',
+    icon: 'developer_mode',
+    path: 'vue-composables',
+    children: composables
+  },
+  {
+    name: 'Security',
+    icon: 'security',
+    path: 'security',
+    children: security
+  },
+  {
+    name: 'Quasar CLI',
+    icon: 'build',
+    path: 'quasar-cli',
+    children: cli
+  },
+  {
+    name: 'Icon Genie CLI',
+    icon: 'stars',
+    path: 'icongenie',
+    children: icongenie
   },
   {
     name: 'App Extensions',

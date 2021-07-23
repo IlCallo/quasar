@@ -1,4 +1,4 @@
-![Quasar Framework logo](https://cdn.quasar.dev/logo/svg/quasar-logo-full-inline.svg)
+![Quasar Framework logo](https://cdn.quasar.dev/logo-v2/header.png)
 
 # Fastclick for Quasar Framework
 > This is a fork of the original Fastclick and is being used and maintained by Quasar Framework.<br>
@@ -52,4 +52,4 @@ FastClick is designed to cope with many different browser oddities. Here are som
 
 ## Credits and collaboration ##
 
-The forked Fastclick is maintained by [Razvan Stoenescu](https://github.com/rstoenescu). Original contributors: [Rowan Beentje](http://twitter.com/rowanbeentje), [Matthew Caruana Galizia](http://twitter.com/mcaruanagalizia) and [Matthew Andrews](http://twitter.com/andrewsmatt) at [FT Labs](http://labs.ft.com). All open source code released by FT Labs is licensed under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request.
+The forked Fastclick is maintained by [Razvan Stoenescu](https://github.com/rstoenescu). Original contributors: [Rowan Beentje](http://twitter.com/rowanbeentje), [Matthew Caruana Galizia](http://twitter.com/mcaruanagalizia) and [Matthew Andrews](http://twitter.com/andrewsmatt) at [FT Labs](http://labs.ft.com). All open source code released by FT Labs is licensed under the MIT license. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request.

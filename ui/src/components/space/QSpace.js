@@ -1,11 +1,11 @@
-import Vue from 'vue'
+import { h, defineComponent } from 'vue'
 
-export default Vue.extend({
+const space = h('div', { class: 'q-space' })
+
+export default defineComponent({
   name: 'QSpace',
 
-  render (h) {
-    return h('div', {
-      staticClass: 'q-space'
-    })
+  setup () {
+    return () => space
   }
 })

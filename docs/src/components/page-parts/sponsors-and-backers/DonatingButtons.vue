@@ -11,10 +11,10 @@
       rel="sponsored"
     >
       <div class="row items-center no-wrap">
-        <q-icon left name="fab fa-github" />
+        <q-icon left :name="fabGithub" />
 
         <div class="text-center">
-          Github Sponsorship
+          GitHub Sponsorship
         </div>
       </div>
     </q-btn>
@@ -31,7 +31,7 @@
         no-caps
       >
         <div class="row items-center no-wrap">
-          <q-icon left name="fab fa-paypal" />
+          <q-icon left :name="fabPaypal" />
 
           <div class="text-center">
             Paypal<br>(one time)
@@ -42,3 +42,20 @@
     </form>
   </div>
 </template>
+
+<script>
+import {
+  fabGithub, fabPaypal
+} from '@quasar/extras/fontawesome-v5'
+
+export default {
+  name: 'DonatingButtons',
+
+  setup () {
+    return {
+      fabGithub,
+      fabPaypal
+    }
+  }
+}
+</script>

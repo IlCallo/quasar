@@ -1,14 +1,11 @@
-import Vue from 'vue'
+import { h, defineComponent } from 'vue'
 
-import slot from '../../utils/slot.js'
+import { hSlot } from '../../utils/private/render.js'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'QStepperNavigation',
 
-  render (h) {
-    return h('div', {
-      staticClass: 'q-stepper__nav',
-      on: this.$listeners
-    }, slot(this, 'default'))
+  setup (_, { slots }) {
+    return () => h('div', { class: 'q-stepper__nav' }, hSlot(slots.default))
   }
 })

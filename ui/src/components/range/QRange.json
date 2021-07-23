@@ -1,8 +1,15 @@
 {
+  "mixins": [ "composables/private/use-form" ],
+
+  "meta": {
+    "docsUrl": "https://v2.quasar.dev/vue-components/range"
+  },
+
   "props": {
-    "value": {
+    "model-value": {
+      "extends": "model-value",
       "type": "Object",
-      "desc": "Model of the component of type { min, max } (both values must be between global min/max); Either use this property (along with a listener for 'input' event) OR use v-model directive",
+      "desc": "Model of the component of type { min, max } (both values must be between global min/max); Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
       "definition": {
         "min": {
           "type": "Number",
@@ -15,8 +22,7 @@
           "examples": [ 12 ]
         }
       },
-      "examples": [ "v-model=\"positionModel\"" ],
-      "category": "model"
+      "examples": [ "v-model=\"positionModel\"" ]
     },
 
     "min": {
@@ -41,6 +47,18 @@
       "default": 1,
       "examples": [ ":step=\"1\"" ],
       "category": "model"
+    },
+
+    "reverse": {
+      "type": "Boolean",
+      "desc": "Work in reverse (changes direction)",
+      "category": "behavior"
+    },
+
+    "vertical": {
+      "type": "Boolean",
+      "desc": "Display in vertical direction",
+      "category": "behavior"
     },
 
     "drag-range": {
@@ -74,8 +92,7 @@
     "label-text-color": {
       "extends": "color",
       "desc": "Color name for labels text from the Quasar Color Palette; Applies to both labels, unless specific label text color props are used",
-      "category": "labels",
-      "addedIn": "v1.1.0"
+      "category": "labels"
     },
 
     "left-label-color": {
@@ -87,8 +104,7 @@
     "left-label-text-color": {
       "extends": "color",
       "desc": "Color name for left label text from the Quasar Color Palette",
-      "category": "labels",
-      "addedIn": "v1.1.0"
+      "category": "labels"
     },
 
     "right-label-color": {
@@ -100,8 +116,7 @@
     "right-label-text-color": {
       "extends": "color",
       "desc": "Color name for right label text from the Quasar Color Palette",
-      "category": "labels",
-      "addedIn": "v1.1.0"
+      "category": "labels"
     },
 
     "left-label-value": {
@@ -140,6 +155,14 @@
       "category": "content"
     },
 
+    "thumb-path": {
+      "type": "String",
+      "desc": "Set custom thumbs svg path",
+      "default": "M 4, 10 a 6,6 0 1,0 12,0 a 6,6 0 1,0 -12,0",
+      "examples": [ "M5 5 h10 v10 h-10 v-10" ],
+      "category": "style"
+    },
+
     "dark": {
       "extends": "dark"
     },
@@ -162,13 +185,24 @@
   },
 
   "events": {
-    "input": {
-      "extends": "input"
+    "update:model-value": {
+      "extends": "update:model-value"
     },
 
     "change": {
-      "extends": "input",
+      "extends": "update:model-value",
       "desc": "Emitted on lazy model value change (after user slides then releases thumb)"
+    },
+
+    "pan": {
+      "desc": "Triggered when user starts panning on the component",
+      "params": {
+        "phase": {
+          "type": "String",
+          "desc": "Phase of panning",
+          "values": [ "start", "end" ]
+        }
+      }
     }
   }
 }

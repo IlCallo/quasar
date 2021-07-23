@@ -1,10 +1,10 @@
-import Vue from 'vue'
+import { h, defineComponent, getCurrentInstance } from 'vue'
 
 import QIcon from '../icon/QIcon.js'
 
-import slot from '../../utils/slot.js'
+import { hSlot, hUniqueSlot } from '../../utils/private/render.js'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'QTh',
 
   props: {
@@ -12,55 +12,58 @@ export default Vue.extend({
     autoWidth: Boolean
   },
 
-  render (h) {
-    const on = this.$listeners
+  emits: [ 'click' ],
 
-    if (this.props === void 0) {
-      return h('th', {
-        on,
-        class: this.autoWidth === true ? 'q-table--col-auto-width' : null
-      }, slot(this, 'default'))
-    }
+  setup (props, { slots, emit }) {
+    const vm = getCurrentInstance()
+    const { proxy: { $q } } = vm
 
-    let col
-    const
-      name = this.$vnode.key,
-      child = [].concat(slot(this, 'default'))
+    return () => {
+      if (props.props === void 0) {
+        return h('th', {
+          class: props.autoWidth === true ? 'q-table--col-auto-width' : ''
+        }, hSlot(slots.default))
+      }
 
-    if (name) {
-      col = this.props.colsMap[name]
-      if (col === void 0) { return }
-    }
-    else {
-      col = this.props.col
-    }
+      let col, child
+      const name = vm.vnode.key
 
-    if (col.sortable === true) {
-      const action = col.align === 'right'
-        ? 'unshift'
-        : 'push'
+      if (name) {
+        col = props.props.colsMap[ name ]
+        if (col === void 0) { return }
+      }
+      else {
+        col = props.props.col
+      }
 
-      child[action](
-        h(QIcon, {
-          props: { name: this.$q.iconSet.table.arrowUp },
-          staticClass: col.__iconClass
-        })
-      )
-    }
+      if (col.sortable === true) {
+        const action = col.align === 'right'
+          ? 'unshift'
+          : 'push'
 
-    const evt = col.sortable === true
-      ? {
-        click: evt => {
-          this.props.sort(col)
-          this.$emit('click', evt)
+        child = hUniqueSlot(slots.default, [])
+        child[ action ](
+          h(QIcon, {
+            class: col.__iconClass,
+            name: $q.iconSet.table.arrowUp
+          })
+        )
+      }
+      else {
+        child = hSlot(slots.default)
+      }
+
+      const data = {
+        class: col.__thClass
+          + (props.autoWidth === true ? ' q-table--col-auto-width' : ''),
+        style: col.headerStyle,
+        onClick: evt => {
+          col.sortable === true && props.props.sort(col) // eslint-disable-line
+          emit('click', evt)
         }
       }
-      : {}
 
-    return h('th', {
-      class: col.__thClass +
-        (this.autoWidth === true ? ' q-table--col-auto-width' : ''),
-      on: { ...on, ...evt }
-    }, child)
+      return h('th', data, child)
+    }
   }
 })

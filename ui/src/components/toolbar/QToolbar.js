@@ -1,19 +1,20 @@
-import Vue from 'vue'
+import { h, defineComponent, computed } from 'vue'
 
-import slot from '../../utils/slot.js'
+import { hSlot } from '../../utils/private/render.js'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'QToolbar',
 
   props: {
     inset: Boolean
   },
 
-  render (h) {
-    return h('div', {
-      staticClass: 'q-toolbar row no-wrap items-center',
-      class: this.inset ? 'q-toolbar--inset' : null,
-      on: this.$listeners
-    }, slot(this, 'default'))
+  setup (props, { slots }) {
+    const classes = computed(() =>
+      'q-toolbar row no-wrap items-center'
+      + (props.inset === true ? ' q-toolbar--inset' : '')
+    )
+
+    return () => h('div', { class: classes.value }, hSlot(slots.default))
   }
 })
