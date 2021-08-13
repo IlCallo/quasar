@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "checkJs": true,
     "target": "esnext",
     "module": "esnext",
     "skipLibCheck": true,
+    "noEmit": true,
     "moduleResolution": "node",
-    "outDir": "./dist"
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "./types/**/*"]
 }

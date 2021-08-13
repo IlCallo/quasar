@@ -81,6 +81,7 @@ export default defineComponent({
     position: {
       type: String,
       default: 'top',
+      /** @param {string} val */
       validator: val => [ 'top', 'right', 'bottom', 'left' ].includes(val)
     },
     size: {
@@ -94,7 +95,7 @@ export default defineComponent({
 
   emits: [ 'start', 'stop' ],
 
-  setup (props, { emit }) {
+  setup (props, { emit, expose }) {
     const { proxy } = getCurrentInstance()
 
     const progress = ref(0)
@@ -226,8 +227,7 @@ export default defineComponent({
       hijacked === true && restoreAjax(start, stop)
     })
 
-    // expose public methods
-    Object.assign(proxy, { start, stop, increment })
+    expose({ start, stop, increment })
 
     return () => h('div', {
       class: classes.value,

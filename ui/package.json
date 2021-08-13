@@ -27,7 +27,8 @@
     "build": "node build/script.build.js",
     "test": "yarn lint && yarn build",
     "lint": "eslint --ext .js,.vue src dev",
-    "lint-fix": "eslint --ext .js,.vue src dev --fix"
+    "lint-fix": "eslint --ext .js,.vue src dev --fix",
+    "build:types": "tsc -p tsconfig.build.json"
   },
   "repository": {
     "type": "git",

@@ -378,18 +378,6 @@ function writeIndexDTS (apis) {
 
   writeLine(contents)
 
-  // Extend Vue instance with injections
-  if (injections) {
-    writeLine(contents, 'declare module \'@vue/runtime-core\' {')
-    writeLine(contents, 'interface ComponentCustomProperties {', 1)
-
-    for (const key3 in injections) {
-      writeLine(contents, `${ key3 }: ${ key3.toUpperCase().replace('$', '') }VueGlobals`, 2)
-    }
-    writeLine(contents, '}', 1)
-    writeLine(contents, '}')
-  }
-
   addQuasarPluginOptions(contents, components, directives, plugins)
 
   quasarTypeContents.forEach(line => write(contents, line))
@@ -403,6 +391,7 @@ function writeIndexDTS (apis) {
   //  and not directly referenced by any file
   writeLine(contents, 'import \'./shim-icon-set\'')
   writeLine(contents, 'import \'./shim-lang\'')
+  writeLine(contents, 'import \'./shim-quasar\'')
 
   writeFile(resolvePath('index.d.ts'), contents.join(''))
 }
