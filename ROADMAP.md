@@ -34,23 +34,24 @@ We are updating this section constantly in order to keep you up to date with our
 
 ### Evergreens
 * 🚧 (WIP) Gradually add more automated tests to Quasar UI. **We're searching for contributors**, get in touch with the team on our [Discord server](https://chat.quasar.dev/) if you're willing to help!
-* 🚧 (WIP) Gather feedback about new Quasar website. [Let us know what do you like and what not!](https://github.com/quasarframework/quasar/discussions/15168)
-
-### Q1 2023
-* Release new Quasar website
-* Porting Quasar packages to ESM
-* Support Vite 3 and 4 in `@quasar/app-vite` ([#14077](https://github.com/quasarframework/quasar/issues/14077)) (already supported via [workaround](https://github.com/quasarframework/quasar/issues/14077#issuecomment-1353213893))
-* Publish official Quasar Organizational chart
-* More triaging automation ([quasarframework/rfcs#10](https://github.com/quasarframework/rfcs/issues/10))
-* Website update community survey
 
 ### Q2 2023
-* Support Capacitor 4 and related bugfixes ([#14226](https://github.com/quasarframework/quasar/pull/14226))
-* Add Quasar entry in [Vite ecosystem CI](https://github.com/vitejs/vite-ecosystem-ci)
+* ✌️ (DONE) Support Capacitor 4 & 5, fix SSL problem ([#14226](https://github.com/quasarframework/quasar/pull/14226))
+* ✌️ (DONE) Add Quasar entry in [Vue ecosystem CI](https://github.com/vuejs/ecosystem-ci/pull/7)
+* 🚧 (WIP) Add Quasar entry in [Vite ecosystem CI](https://github.com/vitejs/vite-ecosystem-ci/pull/208)
+* 🚧 (WIP) Porting Quasar packages to ESM
+* 🚧 (WIP) Support Vite 3 and 4 in `@quasar/app-vite` ([#14077](https://github.com/quasarframework/quasar/issues/14077)) (already supported via [workaround](https://github.com/quasarframework/quasar/issues/14077#issuecomment-1353213893))
 * Add SSG mode ([#2299](https://github.com/quasarframework/quasar/issues/2299)) ([community support](https://github.com/freddy38510/quasar-app-extension-ssg))
+* Publish official Quasar Organizational chart
+* Website update community survey
 * June 30th 2023 marks the end of life for Quasar v1. It will no longer receive updates. (postponed for the second time, previously reported EOL was 31th of December 2022)
 
 ## Archive
+
+### Q1 2023
+* ✌️ (DONE) Release new Quasar website, [share your feedback with us](https://github.com/quasarframework/quasar/discussions/15636)!
+* ✌️ (DONE) Ported Quasar global CLI (`@quasar/cli`) to ESM ([release notes](https://github.com/quasarframework/quasar/releases/tag/%40quasar%2Fcli-v2.0.0))
+* ✌️ (DONE) Ported Icongenie (`@quasar/icongenie`) to ESM ([release notes](https://github.com/quasarframework/quasar/releases/tag/%40quasar%2Ficongenie-v3.0.0))
 
 ### Q4 2022
 * ✌️ (DONE) New Quasar website [preview](https://new-docs.quasar.dev/) 🔥
