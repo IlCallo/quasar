@@ -73,9 +73,9 @@ export interface IndexAPI extends BaseAPI, SharedIndexInstallAPI {
   extendPWACustomSWConf: Callback<(cfg: EsbuildConfiguration, api: IndexAPI) => void>;
   extendSSRWebserverConf: Callback<(cfg: EsbuildConfiguration, api: IndexAPI) => void>;
 
-  registerCommand: (
+  registerCommand: <TParams = Record<string, any>>(
     commandName: string,
-    fn: (params: { args: string[]; params: Record<string, any> }) => Promise<void> | void
+    fn: (params: { args: string[]; params: TParams }) => Promise<void> | void
   ) => void;
 
   registerDescribeApi: (name: string, relativePath: string) => void;
